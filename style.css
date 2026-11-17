@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --ink: #27213b;
+  --muted: #827b91;
+  --purple: #7856d8;
+  --purple-dark: #6040bd;
+  --lavender: #f0ebff;
+  --line: #e9e4f2;
+  --green: #23845f;
+  --red: #c35b70;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(194, 174, 255, .45), transparent 30%),
+    radial-gradient(circle at 85% 82%, rgba(255, 211, 225, .55), transparent 28%),
+    #f8f6fc;
+}
+
+.game-card {
+  width: min(100%, 510px);
+  padding: 48px 46px 32px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 28px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 24px 80px rgba(65, 45, 112, .13);
+  text-align: center;
+  animation: appear .65s ease both;
+}
+
+.eyebrow {
+  color: var(--purple);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+.sparkle { margin-right: 7px; }
+
+h1 {
+  margin: 18px 0 10px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 8vw, 3.45rem);
+  line-height: 1.1;
+  letter-spacing: -.04em;
+}
+h1 span { color: var(--purple); }
+
+.intro {
+  max-width: 340px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.intro strong { color: var(--ink); }
+
+.number-display {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 32px 0;
+  color: #9b91b2;
+  font-size: .75rem;
+  font-weight: 700;
+}
+.range-line {
+  height: 5px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #c8b8ff, #e9c9dd);
+}
+.range-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #8c6be7, #d68caf);
+  opacity: .65;
+}
+
+form { text-align: left; }
+label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.input-row { display: flex; gap: 10px; }
+
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 16px 17px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  outline: none;
+  color: var(--ink);
+  background: #fcfbff;
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus {
+  border-color: #a58be9;
+  box-shadow: 0 0 0 4px rgba(120, 86, 216, .11);
+}
+input::placeholder { color: #b0aabd; }
+
+button { font: inherit; cursor: pointer; }
+#guess-button {
+  flex-shrink: 0;
+  padding: 0 19px;
+  border: 0;
+  border-radius: 13px;
+  color: white;
+  background: var(--purple);
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+#guess-button:hover { background: var(--purple-dark); transform: translateY(-1px); }
+#guess-button:active { transform: translateY(0); }
+#guess-button:disabled { cursor: not-allowed; opacity: .55; }
+
+.feedback {
+  min-height: 48px;
+  margin: 18px 0 22px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  color: #625778;
+  background: var(--lavender);
+  font-size: .87rem;
+  line-height: 1.5;
+}
+.feedback.low, .feedback.high { color: #9c5264; background: #fff0f3; }
+.feedback.won { color: var(--green); background: #eaf7f0; }
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.stat { display: grid; gap: 5px; }
+.stat-label {
+  color: #a29aac;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.stat strong { font-size: 1.35rem; }
+.stat-divider { width: 1px; height: 34px; background: var(--line); }
+
+.restart-button {
+  margin-top: 22px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #716583;
+  background: white;
+  font-size: .82rem;
+  font-weight: 600;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.restart-button:hover {
+  border-color: #c9b9f5;
+  color: var(--purple);
+  background: #faf8ff;
+}
+.footer-note { margin: 24px 0 0; color: #b1aabd; font-size: .72rem; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  body { padding: 16px; }
+  .game-card { padding: 38px 23px 27px; border-radius: 22px; }
+  .input-row { flex-direction: column; }
+  #guess-button { min-height: 49px; }
+  .stats { gap: 30px; }
+}

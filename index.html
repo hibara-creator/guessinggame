@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A fun number guessing game.">
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-card">
+    <div class="eyebrow"><span class="sparkle">✦</span> A LITTLE BRAIN CHALLENGE</div>
+    <h1>Guess the <span>number.</span></h1>
+    <p class="intro">I'm thinking of a number between <strong>1 and 100</strong>. Can you find it?</p>
+
+    <div class="number-display" aria-label="Number range">
+      <span>01</span>
+      <div class="range-line"><span></span></div>
+      <span>100</span>
+    </div>
+
+    <form id="guess-form" novalidate>
+      <label for="guess-input">Your guess</label>
+      <div class="input-row">
+        <input id="guess-input" type="number" min="1" max="100"
+               placeholder="Enter a number..." autocomplete="off" required>
+        <button type="submit" id="guess-button">Guess <span aria-hidden="true">→</span></button>
+      </div>
+    </form>
+
+    <p id="feedback" class="feedback" role="status" aria-live="polite">
+      Make your first guess. You've got this!
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">ATTEMPTS</span>
+        <strong id="attempts">0</strong>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-label">BEST POSSIBLE</span>
+        <strong>∞</strong>
+      </div>
+    </div>
+
+    <button type="button" id="restart-button" class="restart-button">
+      ↻ &nbsp; Start a new game
+    </button>
+    <p class="footer-note">A little logic, a little luck. ✨</p>
+  </main>
+</body>
+</html>
